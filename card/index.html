@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -31,9 +31,1109 @@
   <!-- Modern Executive Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">  <style>
+/* ==========================================================================
+   AMANA LEMA — DIGITAL BUSINESS CARD
+   Style: Premium • Minimal • Executive • Technology • Modern African Entrepreneur
+   ========================================================================== */
 
-  <link rel="stylesheet" href="/style.css">
+/* --- Custom Properties / Design Tokens --- */
+:root {
+  /* Color Palette - Executive Noir & Brushed Gold */
+  --bg-core: #090b0e;
+  --bg-surface: #11141a;
+  --bg-surface-elevated: #161b24;
+  --bg-surface-subtle: rgba(255, 255, 255, 0.03);
+  
+  --gold-primary: #c5a059;
+  --gold-light: #e2c583;
+  --gold-deep: #9d7c38;
+  --gold-glow: rgba(197, 160, 89, 0.14);
+  --gold-glow-strong: rgba(197, 160, 89, 0.28);
+  --gold-border: rgba(197, 160, 89, 0.25);
+  
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-dim: #475569;
+  
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-card: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(197, 160, 89, 0.35);
+
+  --success-color: #22c55e;
+  --success-bg: rgba(34, 197, 94, 0.12);
+  --success-border: rgba(34, 197, 94, 0.25);
+
+  /* Typography */
+  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'Space Grotesk', ui-monospace, monospace;
+
+  /* Dimensions & Spacing */
+  --max-card-width: 440px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 9999px;
+  
+  /* Transitions */
+  --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --- Global Reset & Box Sizing --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-size: 16px;
+  background-color: var(--bg-core);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 16px 12px 36px;
+  position: relative;
+  overflow-x: hidden;
+  background: radial-gradient(circle at 50% 0%, #171c26 0%, #0c0e13 45%, #08090d 100%);
+  background-attachment: fixed;
+}
+
+/* --- Subtle Ambient Lighting (Non-distracting) --- */
+.ambient-glow {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(110px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.45;
+}
+
+.ambient-glow-top {
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 380px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(197, 160, 89, 0.18) 0%, rgba(197, 160, 89, 0) 70%);
+}
+
+.ambient-glow-bottom {
+  bottom: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 440px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0) 70%);
+}
+
+/* --- Card Frame & Shell --- */
+.card-wrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--max-card-width);
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  box-shadow: 
+    0 10px 30px -10px rgba(0, 0, 0, 0.7),
+    0 24px 60px -15px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  padding: 24px 20px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  animation: cardEntrance 0.5s ease-out forwards;
+}
+
+@keyframes cardEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Header / Top Bar --- */
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 6px;
+}
+
+.header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-pill);
+}
+
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold-primary);
+  box-shadow: 0 0 8px var(--gold-primary);
+  animation: pulseDot 2.2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.6;
+  }
+}
+
+.badge-text {
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.icon-action-btn {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.icon-action-btn:hover,
+.icon-action-btn:focus-visible {
+  color: var(--gold-light);
+  border-color: var(--gold-border);
+  background: rgba(197, 160, 89, 0.08);
+  outline: none;
+}
+
+/* --- Hero / Identity Section --- */
+.identity-section {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4px;
+}
+
+.avatar-container {
+  margin-bottom: 18px;
+  position: relative;
+}
+
+/* --- Executive Profile Avatar --- */
+.profile-avatar-wrapper {
+  position: relative;
+  width: 104px;
+  height: 104px;
+  margin: 0 auto;
+  border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(135deg, rgba(226, 197, 131, 0.8) 0%, rgba(197, 160, 89, 0.45) 50%, rgba(157, 124, 56, 0.8) 100%);
+  box-shadow: 
+    0 10px 28px -6px rgba(0, 0, 0, 0.75),
+    0 0 24px -2px var(--gold-glow);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.profile-avatar-wrapper:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 14px 34px -6px rgba(0, 0, 0, 0.85),
+    0 0 32px 0 var(--gold-glow-strong);
+}
+
+.profile-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 16%;
+  display: block;
+  background-color: #1a1e27;
+  border: 2px solid #0c0e12;
+}
+
+.avatar-glow-ring {
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  pointer-events: none;
+}
+
+/* Refined Circular Monogram Fallback */
+.monogram-avatar {
+  position: relative;
+  width: 94px;
+  height: 94px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 35% 30%, #202734 0%, #13171f 65%, #0d0f14 100%);
+  border: 1.5px solid var(--gold-border);
+  box-shadow: 
+    0 8px 24px -4px rgba(0, 0, 0, 0.6),
+    0 0 20px -2px var(--gold-glow),
+    inset 0 1px 2px rgba(255, 255, 255, 0.15);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.monogram-avatar:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 28px -4px rgba(0, 0, 0, 0.7),
+    0 0 28px 0 var(--gold-glow-strong),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+.monogram-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  border: 1px dashed rgba(197, 160, 89, 0.35);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.monogram-text {
+  font-family: var(--font-mono);
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  background: linear-gradient(135deg, #ffffff 0%, var(--gold-light) 50%, var(--gold-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-left: 2px;
+}
+
+.person-name {
+  font-size: 1.625rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  line-height: 1.15;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.person-title {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--gold-light);
+  line-height: 1.4;
+  margin-bottom: 4px;
+  letter-spacing: 0.01em;
+}
+
+.person-company {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.location-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.location-icon {
+  color: var(--gold-primary);
+  flex-shrink: 0;
+}
+
+/* --- Bio Section --- */
+.bio-section {
+  padding: 0 4px;
+}
+
+.bio-text {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: #cbd5e1;
+  text-align: center;
+  font-weight: 400;
+}
+
+/* --- 6. Primary Action: SAVE CONTACT --- */
+.primary-action-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.btn-primary-save {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 20px;
+  background: linear-gradient(135deg, #dfba65 0%, #c5a059 50%, #9d7c38 100%);
+  color: #0b0d11;
+  font-family: var(--font-main);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  box-shadow: 
+    0 4px 16px rgba(197, 160, 89, 0.35),
+    0 1px 2px rgba(255, 255, 255, 0.3) inset;
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary-save:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 24px rgba(197, 160, 89, 0.45),
+    0 1px 2px rgba(255, 255, 255, 0.4) inset;
+  filter: brightness(1.04);
+}
+
+.btn-primary-save:active {
+  transform: translateY(0) scale(0.99);
+  box-shadow: 0 2px 8px rgba(197, 160, 89, 0.3);
+}
+
+.btn-primary-save:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+.btn-save-arrow {
+  display: flex;
+  align-items: center;
+  transition: transform var(--transition-fast);
+}
+
+.btn-primary-save:hover .btn-save-arrow {
+  transform: translateX(3px);
+}
+
+.save-status-toast {
+  min-height: 20px;
+  font-size: 0.78125rem;
+  font-weight: 500;
+  text-align: center;
+  transition: opacity var(--transition-fast);
+  opacity: 0;
+}
+
+.save-status-toast.visible {
+  opacity: 1;
+}
+
+.save-status-toast.success {
+  color: var(--success-color);
+}
+
+/* --- 7. Contact Actions Grid --- */
+.contact-actions-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.primary-contacts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+  width: 100%;
+}
+
+.secondary-contacts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+  width: 100%;
+}
+
+/* If some items are hidden dynamically, grid adapts gracefully */
+.primary-contacts-grid:has(> :only-child),
+.secondary-contacts-grid:has(> :only-child) {
+  grid-template-columns: 1fr;
+}
+
+.primary-contacts-grid:has(> :nth-child(2):last-child),
+.secondary-contacts-grid:has(> :nth-child(2):last-child) {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.contact-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 8px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: 0.71875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  min-height: 68px;
+  user-select: none;
+}
+
+.contact-btn:hover {
+  background: #1c222e;
+  border-color: var(--gold-border);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+.contact-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.contact-btn:focus-visible {
+  outline: 2px solid var(--gold-primary);
+  outline-offset: 2px;
+}
+
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-light);
+  transition: transform var(--transition-fast);
+}
+
+.contact-btn:hover .contact-icon {
+  transform: scale(1.1);
+  color: #ffffff;
+}
+
+/* Custom button accents */
+.contact-btn-whatsapp:hover {
+  border-color: rgba(37, 211, 102, 0.45);
+}
+.contact-btn-whatsapp:hover .contact-icon {
+  color: #25d366;
+}
+
+.contact-btn-secondary {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+}
+
+.contact-btn-secondary:hover {
+  background: var(--bg-surface-elevated);
+  border-color: var(--gold-border);
+  color: var(--text-primary);
+}
+
+/* --- Content Sections (Expertise, Background, Work) --- */
+.content-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 4px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--gold-light);
+  text-transform: uppercase;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-title::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 12px;
+  background: var(--gold-primary);
+  border-radius: 2px;
+}
+
+/* --- 8. Tags / Expertise Chips --- */
+.tags-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.tag-chip {
+  font-size: 0.78125rem;
+  font-weight: 500;
+  color: #d1d5db;
+  background: var(--bg-surface-subtle);
+  border: 1px solid var(--border-subtle);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  line-height: 1.35;
+  transition: all var(--transition-fast);
+}
+
+.tag-chip:hover {
+  border-color: var(--gold-border);
+  color: #ffffff;
+  background: rgba(197, 160, 89, 0.06);
+}
+
+.tag-highlight {
+  border-color: rgba(197, 160, 89, 0.35);
+  color: var(--gold-light);
+  background: rgba(197, 160, 89, 0.08);
+}
+
+/* --- 9. Professional Background Items --- */
+.background-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.background-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-fast);
+}
+
+.background-item:hover {
+  border-color: var(--gold-border);
+}
+
+.background-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(197, 160, 89, 0.08);
+  border: 1px solid rgba(197, 160, 89, 0.18);
+  color: var(--gold-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.background-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.background-entity {
+  font-size: 0.84375rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+.background-role {
+  font-size: 0.78125rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* --- 10. Selected Work Cards --- */
+.work-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.work-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 11px 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.work-card:hover {
+  border-color: var(--gold-border);
+  background: rgba(197, 160, 89, 0.04);
+  transform: translateX(2px);
+}
+
+.work-bullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold-primary);
+  margin-top: 7px;
+  flex-shrink: 0;
+  box-shadow: 0 0 6px var(--gold-glow);
+}
+
+.work-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.work-name {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+}
+
+.work-desc {
+  font-size: 0.78125rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* --- 11. Social Footer --- */
+.card-footer {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding-top: 10px;
+}
+
+.footer-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(197, 160, 89, 0.3) 50%, transparent 100%);
+  margin-bottom: 12px;
+}
+
+.footer-company {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.footer-tagline {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+
+.footer-social-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 6px 0;
+  min-height: 24px;
+}
+
+.footer-social-link {
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 50%;
+  transition: all var(--transition-fast);
+}
+
+.footer-social-link:hover {
+  color: var(--gold-light);
+  transform: translateY(-2px);
+}
+
+.footer-copyright {
+  font-size: 0.71875rem;
+  color: var(--text-dim);
+  margin-top: 4px;
+  letter-spacing: 0.02em;
+}
+
+/* --- Share & QR Modal Dialog --- */
+.share-modal {
+  margin: auto;
+  border: 1px solid var(--border-hover);
+  border-radius: var(--radius-lg);
+  background: var(--bg-surface-elevated);
+  color: var(--text-primary);
+  padding: 0;
+  max-width: 380px;
+  width: 90%;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(16px);
+}
+
+.share-modal::backdrop {
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+}
+
+.share-modal-content {
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.share-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.share-modal-heading {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.close-modal-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: color var(--transition-fast);
+}
+
+.close-modal-btn:hover {
+  color: #ffffff;
+}
+
+.share-modal-subtitle {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.share-url-box {
+  display: flex;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 6px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.share-url-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 0.78125rem;
+  font-family: var(--font-mono);
+  outline: none;
+}
+
+.copy-url-btn {
+  background: var(--gold-primary);
+  color: #0b0d11;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.copy-url-btn:hover {
+  background: var(--gold-light);
+}
+
+.copy-feedback {
+  font-size: 0.75rem;
+  color: var(--success-color);
+  min-height: 16px;
+  text-align: center;
+}
+
+/* ==========================================================================
+   SHARE MY CARD / QR CODE SECTION
+   ========================================================================== */
+.qr-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.qr-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 22px 18px 20px;
+  text-align: center;
+  gap: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transition: border-color var(--transition-fast);
+}
+
+.qr-card:hover {
+  border-color: var(--gold-border);
+}
+
+.qr-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+
+.qr-title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--gold-light);
+  text-transform: uppercase;
+}
+
+.qr-subtitle {
+  font-size: 0.78125rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* White quiet-zone container for 100% reliable scanning */
+.qr-code-wrapper {
+  background: #ffffff;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  box-shadow: 
+    0 4px 18px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4px 0;
+}
+
+.qrcode-display {
+  width: 224px;
+  height: 224px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+}
+
+.qrcode-display canvas,
+.qrcode-display img {
+  display: block;
+  width: 224px !important;
+  height: 224px !important;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.qr-person-tag {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.qr-person-name {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.qr-person-role {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* Action Buttons Grid */
+.qr-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  width: 100%;
+}
+
+.qr-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 6px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-family: var(--font-main);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-transform: uppercase;
+}
+
+.qr-action-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--gold-border);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.qr-action-btn:active {
+  transform: translateY(0);
+}
+
+.qr-action-primary {
+  background: rgba(197, 160, 89, 0.1);
+  border-color: rgba(197, 160, 89, 0.35);
+  color: var(--gold-light);
+}
+
+.qr-action-primary:hover {
+  background: rgba(197, 160, 89, 0.2);
+  color: #ffffff;
+}
+
+.qr-toast {
+  font-size: 0.75rem;
+  color: var(--success-color);
+  min-height: 18px;
+  text-align: center;
+  transition: opacity var(--transition-fast);
+  opacity: 0;
+}
+
+.qr-toast.visible {
+  opacity: 1;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 374px) {
+  body {
+    padding: 10px 8px 24px;
+  }
+  
+  .card {
+    padding: 20px 14px 24px;
+    gap: 18px;
+  }
+
+  .person-name {
+    font-size: 1.45rem;
+  }
+
+  .primary-contacts-grid,
+  .secondary-contacts-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+
+  .contact-btn {
+    padding: 10px 4px;
+    font-size: 0.65rem;
+    min-height: 62px;
+  }
+}
+
+@media (min-width: 600px) {
+  body {
+    padding: 40px 16px 60px;
+    justify-content: center;
+  }
+
+  .card {
+    padding: 30px 26px 32px;
+  }
+}
+
+  </style>
 </head>
 <body>
   <!-- Ambient background glow accents -->
@@ -65,7 +1165,7 @@
       <section class="identity-section" aria-label="Professional Identity">
         <div class="avatar-container">
           <div class="profile-avatar-wrapper">
-            <img class="profile-avatar-img" src="/profile.png" alt="Amana Lema - CTO at BREDEN TECH SOLUTIONS" width="104" height="104" loading="eager" onerror="this.style.display='none'; document.getElementById('avatar-monogram').style.display='flex';">
+            <img class="profile-avatar-img" src="profile.jpg" onerror="this.onerror=null; this.src='profile.png';" alt="Amana Lema - CTO at BREDEN TECH SOLUTIONS" width="104" height="104" loading="eager" onerror="this.style.display='none'; document.getElementById('avatar-monogram').style.display='flex';">
             
             <!-- Fallback Monogram if image is unavailable -->
             <div class="monogram-avatar" id="avatar-monogram" style="display: none;" aria-label="Amana Lema Monogram">
@@ -372,8 +1472,1140 @@
     </div>
   </dialog>
 
-  <!-- Standalone QR Code Library & Main Script -->
-  <script src="/qrcode.min.js"></script>
-  <script src="/script.js"></script>
+  <!-- Standalone QR Code Library & Main Script -->  <!-- Standalone QR Code Generator -->
+  <script>
+/**
+ * EasyQRCodeJS / QRCode.js lightweight standalone QR code generator
+ * Generates standards-compliant QR Code directly to Canvas / Image.
+ * Zero external dependencies.
+ */
+(function(window){
+  function QRPolynomial(num, shift) {
+    if (num.length == undefined) throw new Error(num.length + "/" + shift);
+    var offset = 0;
+    while (offset < num.length && num[offset] == 0) offset++;
+    this.num = new Array(num.length - offset + shift);
+    for (var i = 0; i < num.length - offset; i++) this.num[i] = num[i + offset];
+  }
+  QRPolynomial.prototype = {
+    get: function(index) { return this.num[index]; },
+    getLength: function() { return this.num.length; },
+    multiply: function(e) {
+      var num = new Array(this.getLength() + e.getLength() - 1);
+      for (var i = 0; i < this.getLength(); i++) {
+        for (var j = 0; j < e.getLength(); j++) {
+          num[i + j] ^= QRMath.gexp(QRMath.glog(this.get(i)) + QRMath.glog(e.get(j)));
+        }
+      }
+      return new QRPolynomial(num, 0);
+    },
+    mod: function(e) {
+      if (this.getLength() - e.getLength() < 0) return this;
+      var ratio = QRMath.glog(this.get(0)) - QRMath.glog(e.get(0));
+      var num = new Array(this.getLength());
+      for (var i = 0; i < this.getLength(); i++) num[i] = this.get(i);
+      for (var i = 0; i < e.getLength(); i++) num[i] ^= QRMath.gexp(QRMath.glog(e.get(i)) + ratio);
+      return new QRPolynomial(num, 0).mod(e);
+    }
+  };
+
+  var QRMath = {
+    glog: function(n) {
+      if (n < 1) throw new Error("glog(" + n + ")");
+      return QRMath.LOG_TABLE[n];
+    },
+    gexp: function(n) {
+      while (n < 0) n += 255;
+      while (n >= 256) n -= 255;
+      return QRMath.EXP_TABLE[n];
+    },
+    EXP_TABLE: new Array(256),
+    LOG_TABLE: new Array(256)
+  };
+  for (var i = 0; i < 8; i++) QRMath.EXP_TABLE[i] = 1 << i;
+  for (var i = 8; i < 256; i++) QRMath.EXP_TABLE[i] = QRMath.EXP_TABLE[i - 4] ^ QRMath.EXP_TABLE[i - 5] ^ QRMath.EXP_TABLE[i - 6] ^ QRMath.EXP_TABLE[i - 8];
+  for (var i = 0; i < 255; i++) QRMath.LOG_TABLE[QRMath.EXP_TABLE[i]] = i;
+
+  var QRMode = { MODE_NUMBER: 1 << 0, MODE_ALPHA_NUM: 1 << 1, MODE_8BIT_BYTE: 1 << 2, MODE_KANJI: 1 << 3 };
+  var QRErrorCorrectLevel = { L: 1, M: 0, Q: 3, H: 2 };
+  var QRMaskPattern = { PATTERN000: 0, PATTERN001: 1, PATTERN010: 2, PATTERN011: 3, PATTERN100: 4, PATTERN101: 5, PATTERN110: 6, PATTERN111: 7 };
+
+  var QRUtil = {
+    PATTERN_POSITION_TABLE: [
+      [], [6, 18], [6, 22], [6, 26], [6, 30], [6, 34], [6, 22, 38], [6, 24, 42], [6, 26, 46], [6, 28, 50],
+      [6, 30, 54], [6, 32, 58], [6, 34, 62], [6, 26, 46, 66], [6, 26, 48, 70], [6, 26, 50, 74], [6, 30, 54, 78],
+      [6, 30, 56, 82], [6, 30, 58, 86], [6, 34, 62, 90], [6, 28, 50, 72, 94], [6, 26, 50, 74, 98], [6, 30, 54, 78, 102],
+      [6, 28, 54, 80, 106], [6, 32, 58, 84, 110], [6, 30, 58, 86, 114], [6, 34, 62, 90, 118], [6, 26, 50, 74, 98, 122],
+      [6, 30, 54, 78, 102, 126], [6, 26, 52, 78, 104, 130], [6, 30, 56, 82, 108, 134], [6, 34, 60, 86, 112, 138],
+      [6, 30, 58, 86, 114, 142], [6, 34, 62, 90, 118, 146], [6, 30, 54, 78, 102, 126, 150], [6, 24, 50, 76, 102, 128, 154],
+      [6, 28, 54, 80, 106, 132, 158], [6, 32, 58, 84, 110, 136, 162], [6, 26, 54, 82, 110, 138, 166], [6, 30, 58, 86, 114, 142, 170]
+    ],
+    G15: (1 << 10) | (1 << 8) | (1 << 5) | (1 << 4) | (1 << 2) | (1 << 1) | (1 << 0),
+    G18: (1 << 12) | (1 << 11) | (1 << 10) | (1 << 9) | (1 << 8) | (1 << 5) | (1 << 2) | (1 << 0),
+    G15_MASK: (1 << 14) | (1 << 12) | (1 << 10) | (1 << 4) | (1 << 1),
+    getBCHTypeInfo: function(data) {
+      var d = data << 10;
+      while (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G15) >= 0) {
+        d ^= (QRUtil.G15 << (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G15)));
+      }
+      return ((data << 10) | d) ^ QRUtil.G15_MASK;
+    },
+    getBCHTypeNumber: function(data) {
+      var d = data << 12;
+      while (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G18) >= 0) {
+        d ^= (QRUtil.G18 << (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G18)));
+      }
+      return (data << 12) | d;
+    },
+    getBCHDigit: function(data) {
+      var digit = 0;
+      while (data != 0) { digit++; data >>>= 1; }
+      return digit;
+    },
+    getPatternPosition: function(typeNumber) {
+      return QRUtil.PATTERN_POSITION_TABLE[typeNumber - 1];
+    },
+    getMask: function(maskPattern, i, j) {
+      switch (maskPattern) {
+        case QRMaskPattern.PATTERN000: return (i + j) % 2 == 0;
+        case QRMaskPattern.PATTERN001: return i % 2 == 0;
+        case QRMaskPattern.PATTERN010: return j % 3 == 0;
+        case QRMaskPattern.PATTERN011: return (i + j) % 3 == 0;
+        case QRMaskPattern.PATTERN100: return (Math.floor(i / 2) + Math.floor(j / 3)) % 2 == 0;
+        case QRMaskPattern.PATTERN101: return (i * j) % 2 + (i * j) % 3 == 0;
+        case QRMaskPattern.PATTERN110: return ((i * j) % 2 + (i * j) % 3) % 2 == 0;
+        case QRMaskPattern.PATTERN111: return ((i * j) % 3 + (i + j) % 2) % 2 == 0;
+        default: throw new Error("bad maskPattern:" + maskPattern);
+      }
+    },
+    getErrorCorrectPolynomial: function(errorCorrectLength) {
+      var a = new QRPolynomial([1], 0);
+      for (var i = 0; i < errorCorrectLength; i++) {
+        a = a.multiply(new QRPolynomial([1, QRMath.gexp(i)], 0));
+      }
+      return a;
+    },
+    getLengthInBits: function(mode, type) {
+      if (1 <= type && type < 10) {
+        switch (mode) {
+          case QRMode.MODE_NUMBER: return 10;
+          case QRMode.MODE_ALPHA_NUM: return 9;
+          case QRMode.MODE_8BIT_BYTE: return 8;
+          case QRMode.MODE_KANJI: return 8;
+          default: throw new Error("mode:" + mode);
+        }
+      } else if (type < 27) {
+        switch (mode) {
+          case QRMode.MODE_NUMBER: return 12;
+          case QRMode.MODE_ALPHA_NUM: return 11;
+          case QRMode.MODE_8BIT_BYTE: return 16;
+          case QRMode.MODE_KANJI: return 10;
+          default: throw new Error("mode:" + mode);
+        }
+      } else if (type < 41) {
+        switch (mode) {
+          case QRMode.MODE_NUMBER: return 14;
+          case QRMode.MODE_ALPHA_NUM: return 13;
+          case QRMode.MODE_8BIT_BYTE: return 16;
+          case QRMode.MODE_KANJI: return 12;
+          default: throw new Error("mode:" + mode);
+        }
+      } else {
+        throw new Error("type:" + type);
+      }
+    },
+    getLostPoint: function(qrCode) {
+      var moduleCount = qrCode.getModuleCount();
+      var lostPoint = 0;
+      for (var row = 0; row < moduleCount; row++) {
+        for (var col = 0; col < moduleCount; col++) {
+          var sameCount = 0;
+          var dark = qrCode.isDark(row, col);
+          for (var r = -1; r <= 1; r++) {
+            if (row + r < 0 || moduleCount <= row + r) continue;
+            for (var c = -1; c <= 1; c++) {
+              if (col + c < 0 || moduleCount <= col + c) continue;
+              if (r == 0 && c == 0) continue;
+              if (dark == qrCode.isDark(row + r, col + c)) sameCount++;
+            }
+          }
+          if (sameCount > 5) lostPoint += (3 + sameCount - 5);
+        }
+      }
+      return lostPoint;
+    }
+  };
+
+  var QRRSBlock = {
+    RS_BLOCK_TABLE: [
+      [1, 26, 19], [1, 26, 16], [1, 26, 13], [1, 26, 9],
+      [1, 44, 34], [1, 44, 28], [1, 44, 22], [1, 44, 16],
+      [1, 70, 55], [1, 70, 44], [2, 35, 17], [2, 35, 13],
+      [1, 100, 80], [2, 50, 32], [2, 50, 24], [4, 25, 9],
+      [1, 134, 108], [2, 67, 43], [2, 33, 15, 2, 34, 16], [2, 33, 11, 2, 34, 12],
+      [2, 86, 68], [4, 43, 27], [4, 43, 19], [4, 43, 15],
+      [2, 98, 78], [4, 49, 31], [2, 32, 14, 4, 33, 15], [4, 39, 13, 1, 40, 14],
+      [2, 121, 97], [2, 60, 38, 2, 61, 39], [4, 40, 18, 2, 41, 19], [4, 40, 14, 2, 41, 15],
+      [2, 146, 116], [3, 58, 36, 2, 59, 37], [4, 36, 16, 4, 37, 17], [4, 36, 12, 4, 37, 13],
+      [2, 86, 68, 2, 87, 69], [4, 69, 43, 1, 70, 44], [6, 43, 19, 2, 44, 20], [6, 43, 15, 2, 44, 16]
+    ],
+    getRSBlocks: function(typeNumber, errorCorrectLevel) {
+      var rsBlock = QRRSBlock.getRsBlockTable(typeNumber, errorCorrectLevel);
+      if (rsBlock == undefined) throw new Error("bad rs block @ typeNumber:" + typeNumber + "/errorCorrectLevel:" + errorCorrectLevel);
+      var length = rsBlock.length / 3;
+      var list = [];
+      for (var i = 0; i < length; i++) {
+        var count = rsBlock[i * 3 + 0];
+        var totalCount = rsBlock[i * 3 + 1];
+        var dataCount = rsBlock[i * 3 + 2];
+        for (var j = 0; j < count; j++) list.push({ totalCount: totalCount, dataCount: dataCount });
+      }
+      return list;
+    },
+    getRsBlockTable: function(typeNumber, errorCorrectLevel) {
+      switch (errorCorrectLevel) {
+        case QRErrorCorrectLevel.L: return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 0];
+        case QRErrorCorrectLevel.M: return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 1];
+        case QRErrorCorrectLevel.Q: return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 2];
+        case QRErrorCorrectLevel.H: return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 3];
+        default: return undefined;
+      }
+    }
+  };
+
+  function QR8bitByte(data) {
+    this.mode = QRMode.MODE_8BIT_BYTE;
+    this.data = data;
+  }
+  QR8bitByte.prototype = {
+    getLength: function() { return encodeURI(this.data).replace(/%[0-9a-fA-F]{2}/g, "a").length; },
+    write: function(buffer) {
+      for (var i = 0; i < this.data.length; i++) {
+        var c = this.data.charCodeAt(i);
+        if (c < 128) {
+          buffer.put(c, 8);
+        } else if (c < 2048) {
+          buffer.put(192 | (c >> 6), 8);
+          buffer.put(128 | (c & 63), 8);
+        } else if (c < 65536) {
+          buffer.put(224 | (c >> 12), 8);
+          buffer.put(128 | ((c >> 6) & 63), 8);
+          buffer.put(128 | (c & 63), 8);
+        } else {
+          buffer.put(240 | (c >> 18), 8);
+          buffer.put(128 | ((c >> 12) & 63), 8);
+          buffer.put(128 | ((c >> 6) & 63), 8);
+          buffer.put(128 | (c & 63), 8);
+        }
+      }
+    }
+  };
+
+  function QRBitBuffer() {
+    this.buffer = [];
+    this.length = 0;
+  }
+  QRBitBuffer.prototype = {
+    get: function(index) {
+      var bufIndex = Math.floor(index / 8);
+      return ((this.buffer[bufIndex] >>> (7 - index % 8)) & 1) == 1;
+    },
+    put: function(num, length) {
+      for (var i = 0; i < length; i++) this.putBit(((num >>> (length - i - 1)) & 1) == 1);
+    },
+    putBit: function(bit) {
+      var bufIndex = Math.floor(this.length / 8);
+      if (this.buffer.length <= bufIndex) this.buffer.push(0);
+      if (bit) this.buffer[bufIndex] |= (0x80 >>> (this.length % 8));
+      this.length++;
+    }
+  };
+
+  function QRCodeModel(typeNumber, errorCorrectLevel) {
+    this.typeNumber = typeNumber;
+    this.errorCorrectLevel = errorCorrectLevel;
+    this.modules = null;
+    this.moduleCount = 0;
+    this.dataCache = null;
+    this.dataList = [];
+  }
+  QRCodeModel.prototype = {
+    addData: function(data) {
+      var newData = new QR8bitByte(data);
+      this.dataList.push(newData);
+      this.dataCache = null;
+    },
+    isDark: function(row, col) {
+      if (row < 0 || this.moduleCount <= row || col < 0 || this.moduleCount <= col) {
+        throw new Error(row + "," + col);
+      }
+      return this.modules[row][col];
+    },
+    getModuleCount: function() { return this.moduleCount; },
+    make: function() {
+      if (this.typeNumber < 1) {
+        var typeNumber = 1;
+        for (typeNumber = 1; typeNumber < 40; typeNumber++) {
+          var rsBlocks = QRRSBlock.getRSBlocks(typeNumber, this.errorCorrectLevel);
+          var buffer = new QRBitBuffer();
+          var totalDataCount = 0;
+          for (var i = 0; i < rsBlocks.length; i++) totalDataCount += rsBlocks[i].dataCount;
+          for (var i = 0; i < this.dataList.length; i++) {
+            var data = this.dataList[i];
+            buffer.put(data.mode, 4);
+            buffer.put(data.getLength(), QRUtil.getLengthInBits(data.mode, typeNumber));
+            data.write(buffer);
+          }
+          if (buffer.length <= totalDataCount * 8) break;
+        }
+        this.typeNumber = typeNumber;
+      }
+      this.makeImpl(false, this.getBestMaskPattern());
+    },
+    makeImpl: function(test, maskPattern) {
+      this.moduleCount = this.typeNumber * 4 + 17;
+      this.modules = new Array(this.moduleCount);
+      for (var row = 0; row < this.moduleCount; row++) {
+        this.modules[row] = new Array(this.moduleCount);
+        for (var col = 0; col < this.moduleCount; col++) this.modules[row][col] = null;
+      }
+      this.setupPositionProbePattern(0, 0);
+      this.setupPositionProbePattern(this.moduleCount - 7, 0);
+      this.setupPositionProbePattern(0, this.moduleCount - 7);
+      this.setupPositionAdjustPattern();
+      this.setupTimingPattern();
+      this.setupTypeInfo(test, maskPattern);
+      if (this.typeNumber >= 7) this.setupTypeNumber(test);
+      if (this.dataCache == null) {
+        this.dataCache = QRCodeModel.createData(this.typeNumber, this.errorCorrectLevel, this.dataList);
+      }
+      this.mapData(this.dataCache, maskPattern);
+    },
+    setupPositionProbePattern: function(row, col) {
+      for (var r = -1; r <= 7; r++) {
+        if (row + r <= -1 || this.moduleCount <= row + r) continue;
+        for (var c = -1; c <= 7; c++) {
+          if (col + c <= -1 || this.moduleCount <= col + c) continue;
+          if ((0 <= r && r <= 6 && (c == 0 || c == 6)) || (0 <= c && c <= 6 && (r == 0 || r == 6)) || (2 <= r && r <= 4 && 2 <= c && c <= 4)) {
+            this.modules[row + r][col + c] = true;
+          } else {
+            this.modules[row + r][col + c] = false;
+          }
+        }
+      }
+    },
+    getBestMaskPattern: function() {
+      var minLostPoint = 0;
+      var pattern = 0;
+      for (var i = 0; i < 8; i++) {
+        this.makeImpl(true, i);
+        var lostPoint = QRUtil.getLostPoint(this);
+        if (i == 0 || minLostPoint > lostPoint) {
+          minLostPoint = lostPoint;
+          pattern = i;
+        }
+      }
+      return pattern;
+    },
+    setupTimingPattern: function() {
+      for (var r = 8; r < this.moduleCount - 8; r++) {
+        if (this.modules[r][6] !== null) continue;
+        this.modules[r][6] = (r % 2 == 0);
+      }
+      for (var c = 8; c < this.moduleCount - 8; c++) {
+        if (this.modules[6][c] !== null) continue;
+        this.modules[6][c] = (c % 2 == 0);
+      }
+    },
+    setupPositionAdjustPattern: function() {
+      var pos = QRUtil.getPatternPosition(this.typeNumber);
+      for (var i = 0; i < pos.length; i++) {
+        for (var j = 0; j < pos.length; j++) {
+          var row = pos[i];
+          var col = pos[j];
+          if (this.modules[row][col] !== null) continue;
+          for (var r = -2; r <= 2; r++) {
+            for (var c = -2; c <= 2; c++) {
+              if (r == -2 || r == 2 || c == -2 || c == 2 || (r == 0 && c == 0)) {
+                this.modules[row + r][col + c] = true;
+              } else {
+                this.modules[row + r][col + c] = false;
+              }
+            }
+          }
+        }
+      }
+    },
+    setupTypeNumber: function(test) {
+      var bits = QRUtil.getBCHTypeNumber(this.typeNumber);
+      for (var i = 0; i < 18; i++) {
+        var mod = (!test && ((bits >> i) & 1) == 1);
+        this.modules[Math.floor(i / 3)][i % 3 + this.moduleCount - 8 - 3] = mod;
+      }
+      for (var i = 0; i < 18; i++) {
+        var mod = (!test && ((bits >> i) & 1) == 1);
+        this.modules[i % 3 + this.moduleCount - 8 - 3][Math.floor(i / 3)] = mod;
+      }
+    },
+    setupTypeInfo: function(test, maskPattern) {
+      var data = (this.errorCorrectLevel << 3) | maskPattern;
+      var bits = QRUtil.getBCHTypeInfo(data);
+      for (var i = 0; i < 15; i++) {
+        var mod = (!test && ((bits >> i) & 1) == 1);
+        if (i < 6) this.modules[i][8] = mod;
+        else if (i < 8) this.modules[i + 1][8] = mod;
+        else this.modules[this.moduleCount - 15 + i][8] = mod;
+      }
+      for (var i = 0; i < 15; i++) {
+        var mod = (!test && ((bits >> i) & 1) == 1);
+        if (i < 8) this.modules[8][this.moduleCount - i - 1] = mod;
+        else if (i < 9) this.modules[8][15 - i - 1 + 1] = mod;
+        else this.modules[8][15 - i - 1] = mod;
+      }
+      this.modules[this.moduleCount - 8][8] = !test;
+    },
+    mapData: function(data, maskPattern) {
+      var inc = -1;
+      var row = this.moduleCount - 1;
+      var bitIndex = 7;
+      var byteIndex = 0;
+      for (var col = this.moduleCount - 1; col > 0; col -= 2) {
+        if (col == 6) col--;
+        while (true) {
+          for (var c = 0; c < 2; c++) {
+            if (this.modules[row][col - c] === null) {
+              var dark = false;
+              if (byteIndex < data.length) dark = (((data[byteIndex] >>> bitIndex) & 1) == 1);
+              var mask = QRUtil.getMask(maskPattern, row, col - c);
+              if (mask) dark = !dark;
+              this.modules[row][col - c] = dark;
+              bitIndex--;
+              if (bitIndex == -1) {
+                byteIndex++;
+                bitIndex = 7;
+              }
+            }
+          }
+          row += inc;
+          if (row < 0 || this.moduleCount <= row) {
+            row -= inc;
+            inc = -inc;
+            break;
+          }
+        }
+      }
+    }
+  };
+
+  QRCodeModel.createData = function(typeNumber, errorCorrectLevel, dataList) {
+    var rsBlocks = QRRSBlock.getRSBlocks(typeNumber, errorCorrectLevel);
+    var buffer = new QRBitBuffer();
+    for (var i = 0; i < dataList.length; i++) {
+      var data = dataList[i];
+      buffer.put(data.mode, 4);
+      buffer.put(data.getLength(), QRUtil.getLengthInBits(data.mode, typeNumber));
+      data.write(buffer);
+    }
+    var totalDataCount = 0;
+    for (var i = 0; i < rsBlocks.length; i++) totalDataCount += rsBlocks[i].dataCount;
+    if (buffer.length + 4 <= totalDataCount * 8) buffer.put(0, 4);
+    while (buffer.length % 8 != 0) buffer.putBit(false);
+    while (true) {
+      if (buffer.length >= totalDataCount * 8) break;
+      buffer.put(0xec, 8);
+      if (buffer.length >= totalDataCount * 8) break;
+      buffer.put(0x11, 8);
+    }
+    return QRCodeModel.createBytes(buffer, rsBlocks);
+  };
+
+  QRCodeModel.createBytes = function(buffer, rsBlocks) {
+    var offset = 0;
+    var maxDcCount = 0;
+    var maxEcCount = 0;
+    var dcdata = new Array(rsBlocks.length);
+    var ecdata = new Array(rsBlocks.length);
+    for (var r = 0; r < rsBlocks.length; r++) {
+      var dcCount = rsBlocks[r].dataCount;
+      var ecCount = rsBlocks[r].totalCount - dcCount;
+      maxDcCount = Math.max(maxDcCount, dcCount);
+      maxEcCount = Math.max(maxEcCount, ecCount);
+      dcdata[r] = new Array(dcCount);
+      for (var i = 0; i < dcdata[r].length; i++) dcdata[r][i] = 0xff & buffer.buffer[i + offset];
+      offset += dcCount;
+      var rsPoly = QRUtil.getErrorCorrectPolynomial(ecCount);
+      var rawPoly = new QRPolynomial(dcdata[r], rsPoly.getLength() - 1);
+      var modPoly = rawPoly.mod(rsPoly);
+      ecdata[r] = new Array(rsPoly.getLength() - 1);
+      for (var i = 0; i < ecdata[r].length; i++) {
+        var modIndex = i + modPoly.getLength() - ecdata[r].length;
+        ecdata[r][i] = (modIndex >= 0) ? modPoly.get(modIndex) : 0;
+      }
+    }
+    var totalCodeCount = 0;
+    for (var i = 0; i < rsBlocks.length; i++) totalCodeCount += rsBlocks[i].totalCount;
+    var data = new Array(totalCodeCount);
+    var index = 0;
+    for (var i = 0; i < maxDcCount; i++) {
+      for (var r = 0; r < rsBlocks.length; r++) {
+        if (i < dcdata[r].length) data[index++] = dcdata[r][i];
+      }
+    }
+    for (var i = 0; i < maxEcCount; i++) {
+      for (var r = 0; r < rsBlocks.length; r++) {
+        if (i < ecdata[r].length) data[index++] = ecdata[r][i];
+      }
+    }
+    return data;
+  };
+
+  /**
+   * Main QRCode class API
+   * new QRCode(element, options | text)
+   */
+  function QRCode(el, vOption) {
+    this._el = (typeof el === "string") ? document.getElementById(el) : el;
+    this._htOption = {
+      width: 256,
+      height: 256,
+      typeNumber: 4,
+      colorDark: "#000000",
+      colorLight: "#ffffff",
+      correctLevel: QRErrorCorrectLevel.H
+    };
+
+    if (typeof vOption === 'string') {
+      this._htOption.text = vOption;
+    } else if (vOption) {
+      for (var i in vOption) this._htOption[i] = vOption[i];
+    }
+
+    if (this._htOption.text) {
+      this.makeCode(this._htOption.text);
+    }
+  }
+
+  QRCode.prototype.makeCode = function(sText) {
+    this._oQRCode = new QRCodeModel(-1, this._htOption.correctLevel);
+    this._oQRCode.addData(sText);
+    this._oQRCode.make();
+    this.render();
+  };
+
+  QRCode.prototype.render = function() {
+    if (!this._el) return;
+    this._el.innerHTML = "";
+    var nCount = this._oQRCode.getModuleCount();
+    var canvas = document.createElement("canvas");
+    var size = this._htOption.width;
+    canvas.width = size;
+    canvas.height = size;
+    var ctx = canvas.getContext("2d");
+
+    // Background
+    ctx.fillStyle = this._htOption.colorLight;
+    ctx.fillRect(0, 0, size, size);
+
+    // Modules
+    var tileW = size / nCount;
+    var tileH = size / nCount;
+
+    ctx.fillStyle = this._htOption.colorDark;
+    for (var row = 0; row < nCount; row++) {
+      for (var col = 0; col < nCount; col++) {
+        if (this._oQRCode.isDark(row, col)) {
+          var x = Math.round(col * tileW);
+          var y = Math.round(row * tileH);
+          var w = Math.ceil((col + 1) * tileW) - x;
+          var h = Math.ceil((row + 1) * tileH) - y;
+          ctx.fillRect(x, y, w, h);
+        }
+      }
+    }
+
+    this._canvas = canvas;
+    this._el.appendChild(canvas);
+  };
+
+  QRCode.prototype.getCanvas = function() {
+    return this._canvas;
+  };
+
+  QRCode.CorrectLevel = QRErrorCorrectLevel;
+  window.QRCode = QRCode;
+})(window);
+
+  </script>
+  <!-- Card Application Logic -->
+  <script>
+/**
+ * ============================================================================
+ * AMANA LEMA — DIGITAL BUSINESS CARD CONFIGURATION & LOGIC
+ * ============================================================================
+ * 
+ * To update your permanent card URL or contact details, simply edit the values below.
+ * When you change CARD_URL, the on-screen QR code and all sharing functions
+ * will automatically update.
+ */
+
+// Permanent Digital Card URL (Encoded into QR code & share links)
+const CARD_URL = "https://lema-business-card.vercel.app/card";
+
+// Contact Details Configuration Object
+const CONTACT = {
+  name: "Amana Lema",
+  title: "CTO • Technology & Digital Solutions",
+  company: "BREDEN TECH SOLUTIONS",
+  location: "Arusha, Tanzania",
+  
+  // Enter phone with country code (e.g. "+255XXXXXXXXX")
+  phone: "",
+  
+  // Enter WhatsApp number (e.g. "+255XXXXXXXXX" or "255XXXXXXXXX")
+  whatsapp: "",
+  
+  // Enter professional email (e.g. "amana@bredentech.com")
+  email: "",
+  
+  // Enter official website URL (e.g. "https://bredentech.com")
+  website: "",
+  
+  // Enter LinkedIn profile URL (e.g. "https://linkedin.com/in/username")
+  linkedin: "",
+  
+  // Enter Instagram profile URL (e.g. "https://instagram.com/username")
+  instagram: ""
+};
+
+/**
+ * Bio Note used in vCard
+ */
+const PROFESSIONAL_BIO = "Technology entrepreneur and software developer focused on building practical digital solutions, business systems, websites, and technology products for businesses and organizations.";
+
+/**
+ * Resolves the effective card URL to encode into the QR code.
+ * If CARD_URL is set to production domain, it uses that exact domain.
+ * If still set to the default placeholder during local development / testing,
+ * it automatically uses the active browser location so scanning with another phone
+ * immediately connects to the working page.
+ */
+function getEffectiveCardUrl() {
+  if (CARD_URL && !CARD_URL.includes("YOUR-DOMAIN.com")) {
+    return CARD_URL;
+  }
+  if (typeof window !== "undefined" && window.location && window.location.href && !window.location.href.startsWith("about:")) {
+    // Return clean URL without hash or search params
+    return window.location.origin + window.location.pathname;
+  }
+  return CARD_URL;
+}
+
+// ============================================================================
+// DOM INITIALIZATION & DYNAMIC BINDINGS
+// ============================================================================
+
+document.addEventListener("DOMContentLoaded", () => {
+  initContactButtons();
+  initSaveContactAction();
+  initQRCodeSection();
+  initFooterSocials();
+  initShareAction();
+});
+
+/**
+ * Configure and bind all contact action buttons.
+ * Gracefully hides any button whose configuration is empty.
+ */
+function initContactButtons() {
+  // 1. WhatsApp
+  const btnWhatsapp = document.getElementById("btn-whatsapp");
+  if (btnWhatsapp) {
+    if (CONTACT.whatsapp && CONTACT.whatsapp.trim() !== "") {
+      const cleanWa = CONTACT.whatsapp.replace(/[^\d+]/g, "").replace(/^\+/, "");
+      btnWhatsapp.href = `https://wa.me/${cleanWa}`;
+      btnWhatsapp.style.display = "";
+    } else {
+      btnWhatsapp.style.display = "none";
+    }
+  }
+
+  // 2. Call / Phone
+  const btnCall = document.getElementById("btn-call");
+  if (btnCall) {
+    if (CONTACT.phone && CONTACT.phone.trim() !== "") {
+      const cleanPhone = CONTACT.phone.replace(/\s+/g, "");
+      btnCall.href = `tel:${cleanPhone}`;
+      btnCall.style.display = "";
+    } else {
+      btnCall.style.display = "none";
+    }
+  }
+
+  // 3. Email
+  const btnEmail = document.getElementById("btn-email");
+  if (btnEmail) {
+    if (CONTACT.email && CONTACT.email.trim() !== "") {
+      btnEmail.href = `mailto:${encodeURIComponent(CONTACT.email.trim())}`;
+      btnEmail.style.display = "";
+    } else {
+      btnEmail.style.display = "none";
+    }
+  }
+
+  // 4. Website
+  const btnWebsite = document.getElementById("btn-website");
+  if (btnWebsite) {
+    if (CONTACT.website && CONTACT.website.trim() !== "") {
+      let webUrl = CONTACT.website.trim();
+      if (!/^https?:\/\//i.test(webUrl)) {
+        webUrl = "https://" + webUrl;
+      }
+      btnWebsite.href = webUrl;
+      btnWebsite.style.display = "";
+    } else {
+      btnWebsite.style.display = "none";
+    }
+  }
+
+  // 5. LinkedIn
+  const btnLinkedin = document.getElementById("btn-linkedin");
+  if (btnLinkedin) {
+    if (CONTACT.linkedin && CONTACT.linkedin.trim() !== "") {
+      let linkedUrl = CONTACT.linkedin.trim();
+      if (!/^https?:\/\//i.test(linkedUrl)) {
+        linkedUrl = "https://" + linkedUrl;
+      }
+      btnLinkedin.href = linkedUrl;
+      btnLinkedin.style.display = "";
+    } else {
+      btnLinkedin.style.display = "none";
+    }
+  }
+
+  // 6. Instagram
+  const btnInstagram = document.getElementById("btn-instagram");
+  if (btnInstagram) {
+    if (CONTACT.instagram && CONTACT.instagram.trim() !== "") {
+      let instaUrl = CONTACT.instagram.trim();
+      if (!/^https?:\/\//i.test(instaUrl)) {
+        instaUrl = "https://" + instaUrl;
+      }
+      btnInstagram.href = instaUrl;
+      btnInstagram.style.display = "";
+    } else {
+      btnInstagram.style.display = "none";
+    }
+  }
+}
+
+/**
+ * Setup Save Contact button to generate and trigger .VCF vCard download
+ */
+function initSaveContactAction() {
+  const saveBtn = document.getElementById("save-contact-btn");
+  const statusToast = document.getElementById("save-status");
+  if (!saveBtn) return;
+
+  saveBtn.addEventListener("click", () => {
+    try {
+      downloadVCard();
+
+      // Micro-interaction: button feedback
+      const originalText = saveBtn.querySelector(".btn-save-text").textContent;
+      saveBtn.querySelector(".btn-save-text").textContent = "âœ“ CONTACT READY";
+      saveBtn.style.filter = "brightness(1.15)";
+
+      if (statusToast) {
+        statusToast.textContent = "Contact downloaded. Tap the file to add to phone!";
+        statusToast.className = "save-status-toast visible success";
+      }
+
+      setTimeout(() => {
+        saveBtn.querySelector(".btn-save-text").textContent = originalText;
+        saveBtn.style.filter = "";
+        if (statusToast) {
+          statusToast.className = "save-status-toast";
+        }
+      }, 3500);
+    } catch (err) {
+      console.error("Error generating vCard:", err);
+      if (statusToast) {
+        statusToast.textContent = "Could not generate contact file.";
+        statusToast.className = "save-status-toast visible";
+      }
+    }
+  });
+}
+
+/**
+ * Builds standard compliant vCard 3.0 data string and triggers download
+ * Works across iOS Safari, Android Chrome, Apple Contacts, Google Contacts, Outlook
+ */
+function downloadVCard() {
+  const vcardLines = [
+    "BEGIN:VCARD",
+    "VERSION:3.0",
+    "N:Lema;Amana;;;",
+    `FN:${CONTACT.name || "Amana Lema"}`,
+    `ORG:${CONTACT.company || "BREDEN TECH SOLUTIONS"}`,
+    `TITLE:${CONTACT.title || "CTO • Technology & Digital Solutions"}`,
+    "ADR;TYPE=WORK:;;Arusha;Tanzania;;;"
+  ];
+
+  // Only include phone if configured
+  if (CONTACT.phone && CONTACT.phone.trim() !== "") {
+    vcardLines.push(`TEL;TYPE=CELL,VOICE:${CONTACT.phone.trim()}`);
+  }
+
+  // Only include email if configured
+  if (CONTACT.email && CONTACT.email.trim() !== "") {
+    vcardLines.push(`EMAIL;TYPE=PREF,INTERNET:${CONTACT.email.trim()}`);
+  }
+
+  // Only include website if configured
+  if (CONTACT.website && CONTACT.website.trim() !== "") {
+    let siteUrl = CONTACT.website.trim();
+    if (!/^https?:\/\//i.test(siteUrl)) siteUrl = "https://" + siteUrl;
+    vcardLines.push(`URL:${siteUrl}`);
+  }
+
+  // Add notes / bio
+  vcardLines.push(`NOTE:${PROFESSIONAL_BIO}`);
+  vcardLines.push(`REV:${new Date().toISOString()}`);
+  vcardLines.push("END:VCARD");
+
+  const vcardString = vcardLines.join("\r\n");
+
+  // Create Blob with standard MIME type
+  const blob = new Blob([vcardString], { type: "text/vcard;charset=utf-8;" });
+  const filename = "Amana_Lema_BREDEN_TECH.vcf";
+
+  // Check for msSaveOrOpenBlob (legacy Edge/IE)
+  if (navigator.msSaveBlob) {
+    navigator.msSaveBlob(blob, filename);
+    return;
+  }
+
+  const url = URL.createObjectURL(blob);
+  const downloadLink = document.createElement("a");
+  downloadLink.href = url;
+  downloadLink.setAttribute("download", filename);
+  downloadLink.style.display = "none";
+  document.body.appendChild(downloadLink);
+  downloadLink.click();
+
+  // Cleanup
+  setTimeout(() => {
+    document.body.removeChild(downloadLink);
+    URL.revokeObjectURL(url);
+  }, 250);
+}
+
+/**
+ * ============================================================================
+ * REAL FUNCTIONAL QR CODE GENERATION & ACTIONS
+ * ============================================================================
+ */
+function initQRCodeSection() {
+  const qrContainer = document.getElementById("qrcode-display");
+  const toast = document.getElementById("qr-toast");
+  const shareBtn = document.getElementById("btn-qr-share");
+  const copyBtn = document.getElementById("btn-qr-copy");
+  const downloadBtn = document.getElementById("btn-qr-download");
+
+  if (!qrContainer) return;
+
+  const targetUrl = getEffectiveCardUrl();
+
+  // 1. Generate High-Resolution QR Code (512x512 Canvas for High-DPI Sharpness)
+  try {
+    if (typeof QRCode !== "undefined") {
+      new QRCode(qrContainer, {
+        text: targetUrl,
+        width: 512,
+        height: 512,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+    } else {
+      console.warn("QRCode library not loaded, attempting fallback render.");
+      renderFallbackQR(qrContainer, targetUrl);
+    }
+  } catch (err) {
+    console.error("QR Code generation error:", err);
+    renderFallbackQR(qrContainer, targetUrl);
+  }
+
+  // 2. Share Card Button Action
+  if (shareBtn) {
+    shareBtn.addEventListener("click", async () => {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: "Amana Lema | CTO • Technology & Digital Solutions",
+            text: "Scan or open Amana Lema's Digital Business Card:",
+            url: targetUrl
+          });
+          return;
+        } catch (err) {
+          if (err.name === "AbortError") return;
+        }
+      }
+
+      // Fallback: Copy link
+      copyTextToClipboard(targetUrl, () => {
+        showQrToast("Card link copied!");
+      });
+    });
+  }
+
+  // 3. Copy Link Action
+  if (copyBtn) {
+    copyBtn.addEventListener("click", () => {
+      copyTextToClipboard(targetUrl, () => {
+        showQrToast("Card link copied!");
+      });
+    });
+  }
+
+  // 4. Download QR Code as High-Resolution PNG
+  if (downloadBtn) {
+    downloadBtn.addEventListener("click", () => {
+      downloadQRCodePNG();
+    });
+  }
+
+  function showQrToast(message) {
+    if (!toast) return;
+    toast.textContent = message;
+    toast.className = "qr-toast visible";
+    setTimeout(() => {
+      toast.className = "qr-toast";
+    }, 2800);
+  }
+}
+
+/**
+ * Downloads the generated QR code as a clean, high-resolution PNG with quiet zone padding.
+ */
+function downloadQRCodePNG() {
+  const qrContainer = document.getElementById("qrcode-display");
+  if (!qrContainer) return;
+
+  const existingCanvas = qrContainer.querySelector("canvas");
+  if (!existingCanvas) {
+    console.error("Canvas element not found for QR download");
+    return;
+  }
+
+  // Create an export canvas with clean white quiet-zone padding (600x600)
+  const exportCanvas = document.createElement("canvas");
+  const exportSize = 640;
+  const padding = 50;
+  exportCanvas.width = exportSize;
+  exportCanvas.height = exportSize;
+
+  const ctx = exportCanvas.getContext("2d");
+  // Fill solid white background
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0, 0, exportSize, exportSize);
+
+  // Draw the QR code centered with quiet-zone padding
+  ctx.drawImage(existingCanvas, padding, padding, exportSize - (padding * 2), exportSize - (padding * 2));
+
+  // Trigger download
+  const link = document.createElement("a");
+  link.download = "amana-lema-business-card-qr.png";
+  link.href = exportCanvas.toDataURL("image/png");
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+
+  const toast = document.getElementById("qr-toast");
+  if (toast) {
+    toast.textContent = "QR Code downloaded (PNG)";
+    toast.className = "qr-toast visible";
+    setTimeout(() => {
+      toast.className = "qr-toast";
+    }, 2800);
+  }
+}
+
+/**
+ * Fallback QR code renderer using standard SVG/image endpoint if local script fails
+ */
+function renderFallbackQR(container, url) {
+  const img = document.createElement("img");
+  img.src = `https://api.qrserver.com/v1/create-qr-code/?size=512x512&data=${encodeURIComponent(url)}&margin=1`;
+  img.alt = "Amana Lema Digital Business Card QR Code";
+  img.width = 224;
+  img.height = 224;
+  container.innerHTML = "";
+  container.appendChild(img);
+}
+
+/**
+ * Helper to copy text to clipboard with fallback
+ */
+function copyTextToClipboard(text, onSuccess) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(onSuccess).catch(() => {
+      fallbackCopy(text, onSuccess);
+    });
+  } else {
+    fallbackCopy(text, onSuccess);
+  }
+}
+
+function fallbackCopy(text, onSuccess) {
+  const input = document.createElement("input");
+  input.value = text;
+  document.body.appendChild(input);
+  input.select();
+  try {
+    document.execCommand("copy");
+    if (onSuccess) onSuccess();
+  } catch (e) {
+    console.error("Fallback copy failed", e);
+  }
+  document.body.removeChild(input);
+}
+
+/**
+ * Dynamically populate footer social icons only if URLs are provided
+ */
+function initFooterSocials() {
+  const container = document.getElementById("footer-socials");
+  if (!container) return;
+  container.innerHTML = "";
+
+  const socials = [
+    {
+      key: "whatsapp",
+      title: "WhatsApp",
+      getUrl: (val) => `https://wa.me/${val.replace(/[^\d+]/g, "").replace(/^\+/, "")}`,
+      svg: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"></path><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"></path></svg>'
+    },
+    {
+      key: "linkedin",
+      title: "LinkedIn",
+      getUrl: (val) => /^https?:\/\//i.test(val) ? val : "https://" + val,
+      svg: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>'
+    },
+    {
+      key: "instagram",
+      title: "Instagram",
+      getUrl: (val) => /^https?:\/\//i.test(val) ? val : "https://" + val,
+      svg: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>'
+    },
+    {
+      key: "website",
+      title: "Website",
+      getUrl: (val) => /^https?:\/\//i.test(val) ? val : "https://" + val,
+      svg: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>'
+    }
+  ];
+
+  socials.forEach(item => {
+    const val = CONTACT[item.key];
+    if (val && val.trim() !== "") {
+      const a = document.createElement("a");
+      a.className = "footer-social-link";
+      a.href = item.getUrl(val.trim());
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.setAttribute("aria-label", `Amana Lema ${item.title}`);
+      a.innerHTML = item.svg;
+      container.appendChild(a);
+    }
+  });
+}
+
+/**
+ * Setup Header Share Card modal and Web Share API
+ */
+function initShareAction() {
+  const shareBtn = document.getElementById("share-card-btn");
+  const modal = document.getElementById("share-modal");
+  const closeBtn = document.getElementById("close-modal-btn");
+  const urlInput = document.getElementById("share-url-input");
+  const copyBtn = document.getElementById("copy-url-btn");
+  const feedback = document.getElementById("copy-feedback");
+
+  if (!shareBtn || !modal) return;
+
+  const currentUrl = getEffectiveCardUrl();
+  if (urlInput) urlInput.value = currentUrl;
+
+  shareBtn.addEventListener("click", async () => {
+    // Attempt native mobile share sheet if available
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: "Amana Lema | CTO • Technology & Digital Solutions",
+          text: "Connect with Amana Lema — CTO at BREDEN TECH SOLUTIONS",
+          url: currentUrl
+        });
+        return;
+      } catch (err) {
+        if (err.name !== "AbortError") {
+          console.warn("Native share error, falling back to modal", err);
+        } else {
+          return;
+        }
+      }
+    }
+
+    // Modal fallback
+    if (typeof modal.showModal === "function") {
+      modal.showModal();
+    } else {
+      modal.setAttribute("open", "true");
+    }
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      if (typeof modal.close === "function") {
+        modal.close();
+      } else {
+        modal.removeAttribute("open");
+      }
+    });
+  }
+
+  // Close when clicking modal backdrop
+  modal.addEventListener("click", (e) => {
+    const rect = modal.getBoundingClientRect();
+    const isInDialog = (
+      rect.top <= e.clientY &&
+      e.clientY <= rect.top + rect.height &&
+      rect.left <= e.clientX &&
+      e.clientX <= rect.left + rect.width
+    );
+    if (!isInDialog) {
+      if (typeof modal.close === "function") modal.close();
+      else modal.removeAttribute("open");
+    }
+  });
+
+  // Copy link inside modal
+  if (copyBtn && urlInput) {
+    copyBtn.addEventListener("click", () => {
+      copyTextToClipboard(urlInput.value, () => {
+        if (feedback) feedback.textContent = "Link copied to clipboard!";
+        copyBtn.textContent = "Copied!";
+        setTimeout(() => {
+          if (feedback) feedback.textContent = "";
+          copyBtn.textContent = "Copy";
+        }, 2500);
+      });
+    });
+  }
+}
+
+  </script>
 </body>
 </html>
+
