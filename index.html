@@ -2,16 +2,378 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="0; url=card/">
-  <title>Amana Lema | CTO • Technology &amp; Digital Solutions</title>
-  <script>
-    // Immediate redirect to /card/
-    window.location.replace("card/");
-  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  
+  <!-- Primary Meta Tags -->
+  <title>Amana Lema | CTO • Technology & Digital Solutions</title>
+  <meta name="title" content="Amana Lema | CTO • Technology & Digital Solutions">
+  <meta name="description" content="Amana Lema — CTO and technology entrepreneur focused on digital solutions, business systems, web development and technology products.">
+  <meta name="keywords" content="Amana Lema, BREDEN TECH SOLUTIONS, CTO, Arusha Tanzania, Technology Entrepreneur, Software Developer, Digital Solutions">
+  <meta name="author" content="Amana Lema">
+  <meta name="theme-color" content="#0c0e12">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Amana Lema | CTO • Technology & Digital Solutions">
+  <meta property="og:description" content="Technology entrepreneur and software developer focused on building practical digital solutions, business systems, websites, and technology products.">
+  <meta property="og:site_name" content="BREDEN TECH SOLUTIONS">
+  <meta property="og:image" content="profile.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Amana Lema | CTO • Technology & Digital Solutions">
+  <meta name="twitter:description" content="Technology entrepreneur and software developer focused on building practical digital solutions, business systems, websites, and technology products.">
+  <meta name="twitter:image" content="profile.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Modern Executive Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
-<body style="background: #090b0e; color: #94a3b8; font-family: system-ui, -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; text-align: center; padding: 20px;">
-  <p style="margin-bottom: 12px; font-size: 1.1rem; color: #f8fafc;">Redirecting to Digital Business Card...</p>
-  <p><a href="card/" style="color: #c5a059; text-decoration: none; border-bottom: 1px solid #c5a059; padding-bottom: 2px;">Click here if you are not redirected automatically</a></p>
+<body>
+  <!-- Ambient background glow accents -->
+  <div class="ambient-glow ambient-glow-top" aria-hidden="true"></div>
+  <div class="ambient-glow ambient-glow-bottom" aria-hidden="true"></div>
+
+  <!-- Main Card Container -->
+  <main class="card-wrapper">
+    <article class="card" id="digital-business-card">
+      
+      <!-- Top Decorative Accent -->
+      <header class="card-header">
+        <div class="header-badge">
+          <span class="pulse-dot"></span>
+          <span class="badge-text">DIGITAL BUSINESS CARD</span>
+        </div>
+        <button id="share-card-btn" class="icon-action-btn" aria-label="Share business card" title="Share Card">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="18" cy="5" r="3"></circle>
+            <circle cx="6" cy="12" r="3"></circle>
+            <circle cx="18" cy="19" r="3"></circle>
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+          </svg>
+        </button>
+      </header>
+
+      <!-- 4. Hero / Identity Section -->
+      <section class="identity-section" aria-label="Professional Identity">
+        <div class="avatar-container">
+          <div class="profile-avatar-wrapper">
+            <img class="profile-avatar-img" src="profile.png" alt="Amana Lema - CTO at BREDEN TECH SOLUTIONS" width="104" height="104" loading="eager" onerror="this.style.display='none'; document.getElementById('avatar-monogram').style.display='flex';">
+            
+            <!-- Fallback Monogram if image is unavailable -->
+            <div class="monogram-avatar" id="avatar-monogram" style="display: none;" aria-label="Amana Lema Monogram">
+              <div class="monogram-inner">
+                <span class="monogram-text">AL</span>
+              </div>
+            </div>
+            <div class="avatar-glow-ring" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <h1 class="person-name">AMANA LEMA</h1>
+        <p class="person-title">CTO • Technology &amp; Digital Solutions</p>
+        <p class="person-company">BREDEN TECH SOLUTIONS</p>
+        
+        <div class="location-badge">
+          <svg class="location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span>Arusha, Tanzania</span>
+        </div>
+      </section>
+
+      <!-- 5. Professional Bio -->
+      <section class="bio-section" aria-label="Professional Bio">
+        <p class="bio-text">
+          Technology entrepreneur and software developer focused on building practical digital solutions, business systems, websites, and technology products for businesses and organizations.
+        </p>
+      </section>
+
+      <!-- 6. Primary Action: SAVE CONTACT -->
+      <section class="primary-action-section" aria-label="Save Contact Action">
+        <button id="save-contact-btn" class="btn-primary-save" type="button" aria-label="Save Amana Lema's contact to phone">
+          <span class="btn-save-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+              <polyline points="17 21 17 13 7 13 7 21"></polyline>
+              <polyline points="7 3 7 8 15 8"></polyline>
+            </svg>
+          </span>
+          <span class="btn-save-text">SAVE CONTACT</span>
+          <span class="btn-save-arrow" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </span>
+        </button>
+        <div id="save-status" class="save-status-toast" role="status" aria-live="polite"></div>
+      </section>
+
+      <!-- 7. Contact Actions (Dynamic based on script.js configuration) -->
+      <section class="contact-actions-section" aria-label="Quick Contact Actions">
+        
+        <!-- Primary Contact Buttons -->
+        <div class="primary-contacts-grid" id="primary-contacts">
+          
+          <!-- WhatsApp Button -->
+          <a id="btn-whatsapp" class="contact-btn contact-btn-whatsapp" href="#" target="_blank" rel="noopener noreferrer" aria-label="Message on WhatsApp">
+            <span class="contact-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"></path>
+                <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"></path>
+              </svg>
+            </span>
+            <span class="contact-label">WHATSAPP</span>
+          </a>
+
+          <!-- Call Button -->
+          <a id="btn-call" class="contact-btn contact-btn-call" href="#" aria-label="Call phone number">
+            <span class="contact-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </span>
+            <span class="contact-label">CALL</span>
+          </a>
+
+          <!-- Email Button -->
+          <a id="btn-email" class="contact-btn contact-btn-email" href="#" aria-label="Send an email">
+            <span class="contact-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+            </span>
+            <span class="contact-label">EMAIL</span>
+          </a>
+
+        </div>
+
+        <!-- Secondary Contact Buttons -->
+        <div class="secondary-contacts-grid" id="secondary-contacts">
+          
+          <!-- Website Button -->
+          <a id="btn-website" class="contact-btn contact-btn-secondary" href="#" target="_blank" rel="noopener noreferrer" aria-label="Visit website">
+            <span class="contact-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                <path d="M2 12h20"></path>
+              </svg>
+            </span>
+            <span class="contact-label">WEBSITE</span>
+          </a>
+
+          <!-- LinkedIn Button -->
+          <a id="btn-linkedin" class="contact-btn contact-btn-secondary" href="#" target="_blank" rel="noopener noreferrer" aria-label="View LinkedIn profile">
+            <span class="contact-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect width="4" height="12" x="2" y="9"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </span>
+            <span class="contact-label">LINKEDIN</span>
+          </a>
+
+          <!-- Instagram Button -->
+          <a id="btn-instagram" class="contact-btn contact-btn-secondary" href="#" target="_blank" rel="noopener noreferrer" aria-label="View Instagram profile">
+            <span class="contact-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </span>
+            <span class="contact-label">INSTAGRAM</span>
+          </a>
+
+        </div>
+      </section>
+
+      <!-- 8. Professional Expertise -->
+      <section class="content-section" aria-label="Areas of Expertise">
+        <div class="section-header">
+          <h2 class="section-title">WHAT I DO</h2>
+        </div>
+        <div class="tags-cloud">
+          <span class="tag-chip">Web Development</span>
+          <span class="tag-chip">Business Management Systems</span>
+          <span class="tag-chip">Software &amp; Digital Solutions</span>
+          <span class="tag-chip">IT Solutions</span>
+          <span class="tag-chip">UI/UX &amp; Web Design</span>
+          <span class="tag-chip">Digital Business Transformation</span>
+          <span class="tag-chip tag-highlight">AI-Assisted Development</span>
+        </div>
+      </section>
+
+      <!-- 9. Professional Background -->
+      <section class="content-section" aria-label="Professional Background">
+        <div class="section-header">
+          <h2 class="section-title">PROFESSIONAL BACKGROUND</h2>
+        </div>
+        <div class="background-list">
+          
+          <!-- Experience Item -->
+          <div class="background-item">
+            <div class="background-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </div>
+            <div class="background-content">
+              <h3 class="background-entity">BREDEN TECH SOLUTIONS</h3>
+              <p class="background-role">Chief Technology Officer (CTO)</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. Selected Work -->
+      <section class="content-section" aria-label="Selected Work">
+        <div class="section-header">
+          <h2 class="section-title">SELECTED WORK</h2>
+        </div>
+        <div class="work-grid">
+          
+          <div class="work-card">
+            <div class="work-bullet"></div>
+            <div class="work-body">
+              <h3 class="work-name">BREDEN TECH SOLUTIONS</h3>
+              <p class="work-desc">Websites, business systems and digital solutions.</p>
+            </div>
+          </div>
+
+          <div class="work-card">
+            <div class="work-bullet"></div>
+            <div class="work-body">
+              <h3 class="work-name">LEMA SMART EVENT</h3>
+              <p class="work-desc">Event-service business and digital solutions.</p>
+            </div>
+          </div>
+
+          <div class="work-card">
+            <div class="work-bullet"></div>
+            <div class="work-body">
+              <h3 class="work-name">SISI ESTATE MANAGEMENT SYSTEM</h3>
+              <p class="work-desc">Business management and real-estate operations system.</p>
+            </div>
+          </div>
+
+          <div class="work-card">
+            <div class="work-bullet"></div>
+            <div class="work-body">
+              <h3 class="work-name">AFRICAN DREAMSCAPES</h3>
+              <p class="work-desc">Digital platform for Tanzania safari and travel experiences.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 11. Share My Card / Functional QR Code Section -->
+      <section class="content-section qr-section" aria-label="Share My Card">
+        <div class="qr-card">
+          <div class="qr-header">
+            <h2 class="qr-title">SHARE MY CARD</h2>
+            <p class="qr-subtitle">Scan to open my digital business card</p>
+          </div>
+
+          <div class="qr-code-wrapper">
+            <div id="qrcode-display" class="qrcode-display" aria-label="QR Code to open Amana Lema Digital Business Card"></div>
+          </div>
+
+          <div class="qr-person-tag">
+            <span class="qr-person-name">AMANA LEMA</span>
+            <span class="qr-person-role">BREDEN TECH SOLUTIONS</span>
+          </div>
+
+          <!-- QR Action Buttons -->
+          <div class="qr-actions-grid">
+            <button id="btn-qr-share" class="qr-action-btn qr-action-primary" type="button" aria-label="Share digital card">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="18" cy="5" r="3"></circle>
+                <circle cx="6" cy="12" r="3"></circle>
+                <circle cx="18" cy="19" r="3"></circle>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+              </svg>
+              <span>SHARE CARD</span>
+            </button>
+            
+            <button id="btn-qr-copy" class="qr-action-btn" type="button" aria-label="Copy card URL">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+              </svg>
+              <span>COPY LINK</span>
+            </button>
+
+            <button id="btn-qr-download" class="qr-action-btn" type="button" aria-label="Download QR Code image">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>DOWNLOAD QR</span>
+            </button>
+          </div>
+
+          <div id="qr-toast" class="qr-toast" role="status" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <!-- 12. Social Footer -->
+      <footer class="card-footer" aria-label="Card Footer">
+        <div class="footer-divider" aria-hidden="true"></div>
+        <p class="footer-company">BREDEN TECH SOLUTIONS</p>
+        <p class="footer-tagline">Technology • Innovation • Digital Solutions</p>
+        
+        <!-- Dynamic footer social icon row -->
+        <div class="footer-social-row" id="footer-socials"></div>
+
+        <p class="footer-copyright">&copy; 2026 Amana Lema</p>
+      </footer>
+
+    </article>
+  </main>
+
+  <!-- Share & QR Modal Dialog -->
+  <dialog id="share-modal" class="share-modal" aria-labelledby="share-modal-title">
+    <div class="share-modal-content">
+      <div class="share-modal-header">
+        <h3 id="share-modal-title" class="share-modal-heading">Share Digital Card</h3>
+        <button id="close-modal-btn" class="close-modal-btn" aria-label="Close dialog">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <p class="share-modal-subtitle">Share this digital card or copy the direct link.</p>
+      
+      <div class="share-url-box">
+        <input type="text" id="share-url-input" class="share-url-input" readonly value="">
+        <button id="copy-url-btn" class="copy-url-btn" type="button">Copy</button>
+      </div>
+      
+      <div id="copy-feedback" class="copy-feedback" aria-live="polite"></div>
+    </div>
+  </dialog>
+
+  <!-- Standalone QR Code Library & Main Script -->
+  <script src="qrcode.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
