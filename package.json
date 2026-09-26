@@ -1,8 +1,0 @@
-{
-  "name": "amana-lema-digital-card",
-  "version": "1.0.0",
-  "description": "Executive Digital Business Card for Amana Lema — CTO at BREDEN TECH SOLUTIONS",
-  "scripts": {
-    "start": "node local-server.js"
-  }
-}
