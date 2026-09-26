@@ -2,16 +2,7 @@
   "name": "amana-lema-digital-card",
   "version": "1.0.0",
   "description": "Executive Digital Business Card for Amana Lema — CTO at BREDEN TECH SOLUTIONS",
-  "main": "server.js",
   "scripts": {
-    "start": "node server.js"
-  },
-  "keywords": [
-    "digital-business-card",
-    "vcard",
-    "executive",
-    "breden-tech"
-  ],
-  "author": "Amana Lema",
-  "license": "MIT"
+    "start": "node local-server.js"
+  }
 }
